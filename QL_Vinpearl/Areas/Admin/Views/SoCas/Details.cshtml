@@ -1,0 +1,35 @@
+﻿@model QL_Vinpearl.Models.SOCA
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SOCA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.soCa1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soCa1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHANVIEN.maLoaiNV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHANVIEN.maLoaiNV)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

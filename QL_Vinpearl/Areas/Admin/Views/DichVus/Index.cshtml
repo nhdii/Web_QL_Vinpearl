@@ -1,0 +1,61 @@
+﻿@model IEnumerable<QL_Vinpearl.Models.DICHVU>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main>
+	<div class="container-fluid px-4">
+		<div class="my-3">
+			@Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+		</div>
+		<div class="card mb-4">
+			<div class="card-header">
+				<i class="fas fa-table me-1"></i>
+				Bảng dịch vụ
+			</div>
+			<div class="card-body">
+				<table id="datatablesSimple">
+					<thead>
+						<tr>
+							<th>Tên Dịch Vụ</th>
+							<th>Mô Tả</th>
+							<th>Ảnh</th>
+							<th>Loại Dịch Vụ</th>
+							<th>Xếp Loại</th>
+							<th>SĐT</th>
+							<th>Địa Chỉ</th>
+							<th>Chức Năng</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>@Html.DisplayFor(modelItem => item.tenDV)</td>
+								<td><p class="truncate-text">@Html.DisplayFor(modelItem => item.moTa)</p></td>
+								<td><img style="width: 70px; height: 70px;" src="~/Content/img/@Html.DisplayFor(modelItem => item.anh)" alt="PictureService" /></td>
+								<td>@Html.DisplayFor(modelItem => item.LOAIDV.tenLoai)</td>
+								<td>@Html.DisplayFor(modelItem => item.xepLoai) <span>sao</span> </td>
+								<td>@Html.DisplayFor(modelItem => item.sdtDV)</td>
+								<th>@Html.DisplayFor(modelItem => item.diaChiDV)</th>
+								<td>
+									<div class="d-flex justify-content-center">
+										<a href="@Url.Action("Edit", new { id = item.maDV })"><i class="fa-solid fa-lg fa-pen-to-square"></i></a>
+										<div class="ms-2"></div>
+										<a href="@Url.Action("Details", new { id = item.maDV })"><i class="fa-solid fa-lg fa-circle-info"></i></a>
+										<div class="ms-2"></div>
+										<a href="@Url.Action("Delete", new { id = item.maDV })"><i class="fa-regular fa-lg fa-trash-can"></i></a>
+									</div>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</main>
+
+

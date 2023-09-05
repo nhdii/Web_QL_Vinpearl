@@ -1,0 +1,55 @@
+﻿@model QL_Vinpearl.Models.LoginAdminModel
+@{
+	ViewBag.Title = "Index";
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>@ViewBag.Title</title>
+	<link rel="stylesheet" type="text/css" href="~/Content/css/loginAdminPage.css">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="https://statics.vinpearl.com/favicon.png" type="image/png">
+</head>
+<body>
+	<img class="wave" src="~/Content/img/wave.png">
+	<div class="container">
+		<div class="img">
+			<img src="~/Content/img/bg.svg">
+		</div>
+		<div class="login-content">
+			@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+			{
+				@Html.AntiForgeryToken()
+				@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+				<img src="~/Content/img/avatar.svg">
+				<h2 class="title">Welcome</h2>
+				<div class="input-div one">
+					<div class="i">
+						<i class="fas fa-user"></i>
+					</div>
+					<div class="div">
+						<h5>Email</h5>
+						@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input resetVal" } })
+						@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="input-div pass">
+					<div class="i">
+						<i class="fas fa-lock"></i>
+					</div>
+					<div class="div">
+						<h5>Password</h5>
+						@Html.EditorFor(model => model.MKhau, new { htmlAttributes = new { @class = "input resetVal", type = "password" } })
+						@Html.ValidationMessageFor(model => model.MKhau, "", new { @class = "text-danger resetVal" })
+					</div>
+				</div>
+				<input type="submit" class="btn" value="Login">
+			}
+		</div>
+	</div>
+	<script type="text/javascript" src="~/Scripts/js/loginPage.js"></script>
+</body>
+</html>
+

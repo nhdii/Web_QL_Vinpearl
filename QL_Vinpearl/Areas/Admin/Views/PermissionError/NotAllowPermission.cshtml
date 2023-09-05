@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "NotAllowPermission";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+	<h1 style="color: red;">Bạn Không Có Quyền Truy Cập Vào Trang Này!!!</h1>
+	<a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Dashboard")">Về Trang Chủ</a>
+</div>

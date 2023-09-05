@@ -1,0 +1,109 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container mt-4" style="background-color: white; width: 95%; border: 1px solid #CBD0DD; border-radius:10px">
+	<div class="mb-8 mt-4">
+		<h2 class="mb-2 fw-bold">Quản Lý Dịch Vụ Vinpearl - Bảng Điều Khiển</h2>
+		<p class="text-700 fst-italic fs-5 fw-light">Dưới đây là tình hình động của hệ thống hiện tại.</p>
+	</div>
+	<div class="row gx-5">
+		<div class="col-xxl-3 col-md-6 mb-5">
+			<a href="@Url.Action("Index", "KhachHangs")" class="text-decoration-none">
+				<div class="card card-raised bg-primary text-white">
+					<div class="card-body px-4">
+						<div class="d-flex justify-content-between align-items-center mb-2">
+							<div class="me-2">
+								<div class="display-5 text-white">@ViewBag.CountKH</div>
+								<div class="card-text fw-bold">Khách Hàng</div>
+							</div>
+							<div class="icon-circle bg-white-50 text-primary">
+								<i class="fa-solid fa-user-large fs-1 me-4" style="color:white;"></i>
+							</div>
+						</div>
+						<div class="card-text">
+							<div class="d-inline-flex align-items-center">
+								<i class="fa-solid fa-arrow-up me-1"></i>
+								<div class="caption fw-500 me-2">3%</div>
+								<div class="caption">hơn tháng trước.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-xxl-3 col-md-6 mb-5">
+			<a href="@Url.Action("Index", "DichVus")" class="text-decoration-none">
+				<div class="card card-raised text-white" style="background-color: #FFB300;">
+					<div class="card-body px-4">
+						<div class="d-flex justify-content-between align-items-center mb-2">
+							<div class="me-2">
+								<div class="display-5 text-white">@ViewBag.CountDV</div>
+								<div class="card-text fw-bold">Dịch Vụ</div>
+							</div>
+							<div class="icon-circle bg-white-50 text-warning">
+								<i class="fa-solid fa-ticket-simple fs-1 me-4" style="color:white;"></i>
+							</div>
+						</div>
+						<div class="card-text">
+							<div class="d-inline-flex align-items-center">
+								<div class="caption">Có trong hệ thống.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-xxl-3 col-md-6 mb-5">
+			<a href="@Url.Action("Index", "HoaDons")" class="text-decoration-none">
+				<div class="card card-raised bg-secondary text-white">
+					<div class="card-body px-4">
+						<div class="d-flex justify-content-between align-items-center mb-2">
+							<div class="me-2">
+								<div class="display-5 text-white">@ViewBag.CountHD</div>
+								<div class="card-text fw-bold">Hoá Đơn</div>
+							</div>
+							<div class="icon-circle bg-white-50 text-secondary">
+								<i class="fa-solid fa-money-bill-wave fs-1 me-4" style="color:white;"></i>
+							</div>
+						</div>
+						<div class="card-text">
+							<div class="d-inline-flex align-items-center">
+								<i class="fa-solid fa-arrow-up me-1"></i>
+								<div class="caption fw-500 me-2">2%</div>
+								<div class="caption">hơn tháng trước</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-xxl-3 col-md-6 mb-5">
+			<a  href="@Url.Action("Index", "Ves")" class="text-decoration-none">
+				<div class="card card-raised text-white" style="background-color: #6000E5;">
+					<div class="card-body px-4">
+						<div class="d-flex justify-content-between align-items-center mb-2">
+							<div class="me-2">
+								<div class="display-5 text-white">@ViewBag.CountVe</div>
+								<div class="card-text fw-bold">Vé</div>
+							</div>
+							<div class="icon-circle bg-white-50 text-info">
+								<i class="fa-solid fa-ticket fs-1 me-4" style="color:white;"></i>
+							</div>
+						</div>
+						<div class="card-text">
+							<div class="d-inline-flex align-items-center">
+								<div class="caption">Có trong hệ thống.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>

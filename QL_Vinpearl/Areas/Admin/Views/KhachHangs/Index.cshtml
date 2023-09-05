@@ -1,0 +1,72 @@
+﻿@model IEnumerable<QL_Vinpearl.Models.KHACHHANG>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+	string gtinh = "";
+}
+<main>
+	<div class="container-fluid px-4">
+		<div class="my-3 flex">
+			@Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+			<a href="@Url.Action("ExportToExcel", "KhachHangs")" class="btn btn-primary">Xuất sang file excel</a>
+		</div>
+		<div class="card mb-4">
+			<div class="card-header">
+				<i class="fas fa-table me-1"></i>
+				Bảng khách hàng
+			</div>
+			<div class="card-body">
+				<table id="datatablesSimple">
+					<thead>
+						<tr>
+							<th>Ảnh</th>
+							<th>Họ Tên</th>
+							<th>SĐT</th>
+							<th>Địa Chỉ</th>
+							<th>Ngày Sinh</th>
+							<th>Giới Tính</th>
+							<th>Email</th>
+							<th>Chức Năng</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td><img style="width: 70px; height: 70px;" src="~/Content/img/Avatar/@Html.DisplayFor(modelItem => item.anh)" alt="Avatar" /></td>
+								<td>@Html.DisplayFor(modelItem => item.hoTenKH)</td>
+								<td>@Html.DisplayFor(modelItem => item.SDT)</td>
+								<td>@Html.DisplayFor(modelItem => item.diaChi)</td>
+								<td>@Html.DisplayFor(modelItem => item.ngaySinh)</td>
+								<td>
+									@{
+										if (item.gioiTinh == true)
+										{
+											gtinh = "Nam";
+										}
+										else
+										{
+											gtinh = "Nữ";
+										}
+									}
+									@gtinh
+								</td>
+								<td>@Html.DisplayFor(modelItem => item.email)</td>
+								<td>
+									<div class="d-flex justify-content-center">
+										<a href="@Url.Action("Edit", new { id = item.maKH })"><i class="fa-solid fa-lg fa-pen-to-square"></i></a>
+										<div class="ms-2"></div>
+										<a href="@Url.Action("Details", new { id = item.maKH })"><i class="fa-solid fa-lg fa-circle-info"></i></a>
+										<div class="ms-2"></div>
+										<a href="@Url.Action("Delete", new { id = item.maKH })"><i class="fa-regular fa-lg fa-trash-can"></i></a>
+									</div>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</main>

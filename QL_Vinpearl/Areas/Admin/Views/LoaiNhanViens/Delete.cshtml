@@ -1,0 +1,20 @@
+﻿@model QL_Vinpearl.Models.LOAINV
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container">
+	<h3>Bạn có chắc chắn muốn xoá loại nhân viên này không?</h3>
+	<p>Mã loại nhân viên: @Html.DisplayFor(model => model.maLoaiNV)</p>
+	<p>Tên loại nhân viên: @Html.DisplayFor(model => model.tenLoai)</p>
+	<p>Lương cơ bản: @Html.DisplayFor(model => model.luongCoBan)</p>
+	@using (Html.BeginForm("Delete", "LoaiNhanViens", FormMethod.Post))
+	{
+		@Html.AntiForgeryToken()
+		<div class="m-auto">
+			<input class="btn btn-primary btn-lg" type="submit" value="Xoá" />
+			@Html.ActionLink("Quay Về", "Index", null, new { @class = "btn btn-primary btn-lg" })
+		</div>
+	}
+</div>

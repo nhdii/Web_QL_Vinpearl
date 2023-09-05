@@ -1,0 +1,57 @@
+﻿@model IEnumerable<QL_Vinpearl.Models.HOADON>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main>
+	<div class="container-fluid px-4">
+		<div class="my-3 flex">
+			<a href="@Url.Action("ExportToExcel", "HoaDons")" class="btn btn-primary">Xuất sang file excel</a>
+		</div>
+		<div class="card mb-4">
+			<div class="card-header">
+				<i class="fas fa-table me-1"></i>
+				Bảng hoá đơn
+			</div>
+			<div class="card-body">
+				<table id="datatablesSimple">
+					<thead>
+						<tr>
+							<th>Mã Hoá Đơn</th>
+							<th>Tên Khách Hàng</th>
+							<th>Tên Nhân Viên</th>
+							<th>Ngày Thanh Toán</th>
+							<th>Số Điện Thoại</th>
+							<th>Email</th>
+							<th>Chức Năng</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>@Html.DisplayFor(modelItem => item.maHD)</td>
+								<th>@Html.DisplayFor(modelItem => item.KHACHHANG.hoTenKH)</th>
+								<th>@Html.DisplayFor(modelItem => item.NHANVIEN.hoTenNV)</th>
+								<td>@Html.DisplayFor(modelItem => item.ngayThanhToan)</td>
+								<th>@Html.DisplayFor(modelItem => item.SDT)</th>
+								<th>@Html.DisplayFor(modelItem => item.email)</th>
+								<td>
+									<div class="d-flex justify-content-center">
+										<a href="@Url.Action("Edit", new { id = item.maHD })"><i class="fa-solid fa-lg fa-pen-to-square"></i></a>
+										<div class="ms-2"></div>
+										<a href="@Url.Action("Delete", new { id = item.maHD })"><i class="fa-regular fa-lg fa-trash-can"></i></a>
+									</div>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</main>
+
+

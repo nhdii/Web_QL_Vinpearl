@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="36dd692b287b499699e1788e1657b1ba" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="QL_VinpearlModel.CTHD" Width="1.5" PointX="7.5" PointY="4.625" />
+        <EntityTypeShape EntityType="QL_VinpearlModel.CHUCNANG" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="QL_VinpearlModel.DICHVU" Width="1.5" PointX="3" PointY="12.25" />
+        <EntityTypeShape EntityType="QL_VinpearlModel.HOADON" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="QL_VinpearlModel.KHACHHANG" Width="1.5" PointX="3" PointY="8.25" />
+        <EntityTypeShape EntityType="QL_VinpearlModel.LOAIDV" Width="1.5" PointX="0.75" PointY="13" />
+        <EntityTypeShape EntityType="QL_VinpearlModel.LOAINV" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="QL_VinpearlModel.NHANVIEN" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="QL_VinpearlModel.PHANQUYEN" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="QL_VinpearlModel.SOCA" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="QL_VinpearlModel.VE" Width="1.5" PointX="5.25" PointY="12.625" />
+        <AssociationConnector Association="QL_VinpearlModel.fk_CTHD_HOADON" />
+        <AssociationConnector Association="QL_VinpearlModel.fk_CTHD_VE" />
+        <AssociationConnector Association="QL_VinpearlModel.fk_PHANQUYEN_CHUCNANG" />
+        <AssociationConnector Association="QL_VinpearlModel.fk_DICHVU_LOAIDV" />
+        <AssociationConnector Association="QL_VinpearlModel.fk_VE_DICHVU" />
+        <AssociationConnector Association="QL_VinpearlModel.fk_HOADON_KHACHHANG" />
+        <AssociationConnector Association="QL_VinpearlModel.fk_HOADON_NHANVIEN" />
+        <AssociationConnector Association="QL_VinpearlModel.fk_NHANVIEN_LOAINV" />
+        <AssociationConnector Association="QL_VinpearlModel.fk_PHANQUYEN_LOAINV" />
+        <AssociationConnector Association="QL_VinpearlModel.fk_SOCA_NHANVIEN" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

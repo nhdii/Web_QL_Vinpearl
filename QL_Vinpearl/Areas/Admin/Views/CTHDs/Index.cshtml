@@ -1,0 +1,52 @@
+﻿@model IEnumerable<QL_Vinpearl.Models.CTHD>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main>
+	<div class="container-fluid px-4">
+		<div class="my-5">
+		</div>
+		<div class="card mb-4">
+			<div class="card-header">
+				<i class="fas fa-table me-1"></i>
+				Bảng chi tiết hoá đơn
+			</div>
+			<div class="card-body">
+				<table id="datatablesSimple">
+					<thead>
+						<tr>
+							<th>Mã Hoá Đơn</th>
+							<th>Mã Vé</th>
+							<th>Số Lượng</th>
+							<th>Giá Tiền</th>
+							<th>Chức Năng</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>@Html.DisplayFor(modelItem => item.maHD)</td>
+								<th>@Html.DisplayFor(modelItem => item.maVe)</th>
+								<th>@Html.DisplayFor(modelItem => item.soLuong)</th>
+								<th>@Html.DisplayFor(modelItem => item.giaTien)</th>
+								<td>
+									<div class="d-flex justify-content-center">
+										<a href="@Url.Action("Edit", new { maHD = item.maHD, maVe = item.maVe })"><i class="fa-solid fa-lg fa-pen-to-square"></i></a>
+										<div class="ms-2"></div>
+										<a href="@Url.Action("Delete", new { maHD = item.maHD, maVe = item.maVe  })"><i class="fa-regular fa-lg fa-trash-can"></i></a>
+									</div>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</main>
+
+

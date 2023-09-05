@@ -1,0 +1,27 @@
+﻿@model QL_Vinpearl.Models.LOAIDV
+
+@{
+	ViewBag.Title = "Details";
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+	<h4>LOAIDV</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.tenLoai)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.tenLoai)
+		</dd>
+
+	</dl>
+</div>
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.maLoaiDV }) |
+	@Html.ActionLink("Back to List", "Index")
+</p>

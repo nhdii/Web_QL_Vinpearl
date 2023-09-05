@@ -1,0 +1,66 @@
+﻿
+@{
+	ViewBag.Title = "Giỏ Hàng";
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+	var cart = Session["cart"] as List<Dictionary<string, object>>;
+	string loaiVe = "";
+	int tongTien = 0;
+}
+
+<div class="bg-light" style="height: 100vh; overflow-y:scroll">
+	<div class="container bg-white rounded h-75">
+		@if (cart != null && cart.Count > 0)
+		{
+			<h2>Thông Tin Giỏ Hàng:</h2>
+			foreach (var cartItem in cart)
+			{
+				<div class="d-flex">
+					<div>
+						<img src="~/Content/img/@cartItem["anh"]" alt="Alternate Text" style="width: 250px" />
+					</div>
+					<div class="ms-4">
+						<h2>@cartItem["tenDV"]</h2>
+						<h4>
+							Loại Vé: @{
+								if (cartItem["loaiVe"] as int? == 0)
+								{
+									loaiVe = "Trẻ em";
+								}
+								else
+								{
+									loaiVe = "Người Lớn";
+								}
+								@loaiVe
+							}
+						</h4>
+						<h4>Giá: @cartItem["thanhTien"] vnđ </h4>
+						<div class="d-flex">
+							<a class="mt-1" href="@Url.Action("MinusItem", "Cart", new { maDV = cartItem["maDV"] })"><i class="fa-solid fa-minus fs-4"></i></a>
+							<h4 class="ms-2 me-2">Số Lượng: @cartItem["soLuong"]</h4>
+							<a class="mt-1" href="@Url.Action("PlusItem", "Cart", new { maDV = cartItem["maDV"] })"><i class="fa-solid fa-plus fs-4"></i></a>
+
+							<a class="fw-bold ms-3 fs-5 text-decoration-none" href="@Url.Action("RemoveItem", "Cart", new { maDV = cartItem["maDV"] })">Xoá</a>
+						</div>
+					</div>
+				</div>
+				<hr />
+								}
+		<div class="ms-4">
+			<h4>Tổng Tiền: @{
+				foreach (var cartItem in cart)
+				{
+					tongTien += Convert.ToInt32(@cartItem["thanhTien"]);
+					Session["tongTienMua"] = tongTien;
+				}
+			} @tongTien vnđ</h4>
+			<a class="btn btn-primary" href="@Url.Action("Buy", "Cart")">Thanh Toán</a>
+		</div>
+		}
+				else
+				{
+			<div class="d-flex justify-content-center align-items-center mt-5">
+				<h2>Giỏ Hàng Trống!</h2>
+			</div>
+		}
+	</div>
+</div>

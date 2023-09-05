@@ -1,0 +1,136 @@
+﻿@model QL_Vinpearl.Models.DICHVU
+
+@{
+	ViewBag.Title = "Details";
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+	var radioBtnName = "loaiVe";
+	int value1 = 0;
+	int value2 = 1;
+}
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link href="~/Content/css/styleAdmin.css" rel="stylesheet" />
+	<link href="~/Content/css/adminPageStyle.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<style>
+		.product-details {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+
+			.product-details .product-image {
+				flex: 2;
+				margin-right: 20px;
+				margin-left: 50px;
+			}
+
+				.product-details .product-image img {
+					max-width: 120%;
+					height: auto;
+				}
+
+			.product-details .product-description {
+				flex: 2;
+			}
+
+			.product-details .product-name {
+				font-size: 28px;
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+
+			.product-details .product-price {
+				font-size: 22px;
+				margin-bottom: 20px;
+			}
+
+			.product-details .product-summary {
+				font-size: 18px;
+				line-height: 1.5;
+				margin-bottom: 30px;
+				width: 80%;
+				text-align: justify;
+			}
+
+			.product-details .product-features {
+				list-style: none;
+				padding-left: 0;
+				margin-bottom: 20px;
+			}
+
+				.product-details .product-features li {
+					font-size: 22px;
+					margin-bottom: 10px;
+				}
+
+		.btn {
+			display: inline-block;
+			padding: 10px 20px;
+			border-radius: 5px;
+			text-decoration: none;
+			font-size: 18px;
+			font-weight: bold;
+			transition: all 0.3s ease;
+		}
+
+		.btn-primary {
+			background-color: #007bff;
+			color: #fff;
+		}
+
+		.btn-secondary {
+			background-color: #6c757d;
+			color: #fff;
+			margin-left: 10px;
+		}
+
+		.btn:hover {
+			transform: translateY(-2px);
+			box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+		}
+	</style>
+</head>
+<body>
+	<div class="product-details">
+		<div class="product-image">
+			<img src="~/Content/img/@Html.DisplayFor(model => model.anh)" alt="" width="650" height="350" />
+		</div>
+		<div class="product-description">
+			<h2 class="product-name">@Html.DisplayFor(model => model.tenDV)</h2>
+			<ul class="product-features">
+				<li><strong>Xếp loại:</strong> @Html.DisplayFor(model => model.xepLoai)</li>
+				<li class="product-price"><strong>Giá tiền:</strong> @ViewBag.giaTien</li>
+			</ul>
+			<p class="product-summary">@Html.DisplayFor(model => model.moTa)</p>
+			<ul class="product-features">
+				<li><strong>Số điện thoại dịch vụ:</strong> @Html.DisplayFor(model => model.sdtDV)</li>
+				<li><strong>Địa chỉ dịch vụ:</strong> @Html.DisplayFor(model => model.diaChiDV)</li>
+			</ul>
+			@*<form action="@Url.Action("")" method="post">
+					<input type="hidden" name="cartId" value="@Html.DisplayFor(model => model.maDV)" />
+					<div style="display:flex">
+						<button type="submit" class="btn btn-primary" >Đặt vé ngay</button>
+					</div>
+				</form>*@
+			@Html.ActionLink("Thêm Vào Giỏ", "Cart", "Cart", new { id = Model.maDV, loaiVe = 0 }, new { @class = "cart-link btn btn-primary" })
+			<input type="radio" class="ms-4" name="@radioBtnName" value="@value1" checked="checked" /> Trẻ Em
+			<input type="radio" name="@radioBtnName" value="@value2" /> Người Lớn
+		</div>
+	</div>
+	<script>
+    $(document).ready(function () {
+        // Lắng nghe sự kiện thay đổi radio button
+        $('input[name="@radioBtnName"]').change(function () {
+            var selectedValue = $(this).val();
+            var url = '@Url.Action("Cart", "Cart", new { id = Model.maDV, loaiVe = "__loaiVe__" })';
+            url = url.replace('__loaiVe__', selectedValue);
+
+            // Cập nhật link của ActionLink
+            $('.cart-link').attr('href', url);
+        });
+    });
+	</script>
+</body>

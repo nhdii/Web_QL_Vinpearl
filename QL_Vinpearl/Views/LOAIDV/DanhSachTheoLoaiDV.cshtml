@@ -1,0 +1,35 @@
+﻿@model IEnumerable<QL_Vinpearl.Models.DICHVU>
+
+@{
+	ViewBag.Title = "DanhSachTheoLoaiDV";
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+	var grid = new WebGrid(Model, canPage: true, defaultSort: "tenDV", rowsPerPage: 2);
+
+}
+
+<head>
+	<link href="~/Content/bootstrap5/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/Content/css/styleAdmin.css" rel="stylesheet" />
+
+</head>
+
+<div class="container-fluid py-5">
+	<div class="service-container">
+		<div class="row">
+			@foreach (var item in Model)
+			{
+				<div class="col-md-4 mb-3">
+					<div class="service-card h-100">
+						<img src="~/Content/img/@Html.DisplayFor(modelItem => item.anh )" class="card-img-top" alt="Product image">
+						<div class="service-card-body">
+							<h5 class="service-card-title">@item.tenDV</h5>
+						</div>
+						<div class="service-card-footer">
+							<a href="@Url.Action("Details", "DICHVU", new { id = item.maDV })" class="service-btn service-btn-primary">Xem chi tiết</a>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>

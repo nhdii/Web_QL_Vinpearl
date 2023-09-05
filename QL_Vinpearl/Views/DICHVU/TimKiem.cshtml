@@ -1,0 +1,54 @@
+﻿@model IEnumerable<QL_Vinpearl.Models.DICHVU>
+
+@{
+	ViewBag.Title = "TimKiem";
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+	var grid = new WebGrid(Model, canPage: true, defaultSort: "tenDV", rowsPerPage: 2);
+}
+
+<head>
+	<link href="~/Content/bootstrap5/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/Content/css/styleAdmin.css" rel="stylesheet" />
+
+</head>
+@using (Html.BeginForm())
+{
+	<div class="container-fluid py-5">
+		<div class="container">
+			<div class="row d-flex justify-content-between align-items-center flex-nowrap">
+				<div class="col-sm-7 col-12 border-start border-5 border-primary ps-5 mb-5">
+					<h6 class="text-primary text-uppercase">Dịch vụ</h6>
+					<h3 class="text-uppercase mb-0">Sản phẩm dành cho bạn</h3>
+				</div>
+				<div class="col-sm-4 col-12">
+					<form action="@Url.Action("TimKiem", "HomScreen")" method="get" class="form-inline my-2 my-lg-0 d-flex align-items-start">
+						<input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search" name="timKiem">
+						<button class="btn btn-outline-success fw-bold" type="submit">Tìm kiếm</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+
+<div class="container-fluid py-5">
+	<div class="service-container">
+		<div class="row">
+			@foreach (var item in Model)
+			{
+				<div class="col-md-4 mb-3">
+					<div class="service-card h-100">
+						<img src="~/Content/img/@Html.DisplayFor(modelItem => item.anh )" class="card-img-top" alt="Product image">
+						<div class="service-card-body">
+							<h5 class="service-card-title">@item.tenDV</h5>
+						</div>
+						<div class="service-card-footer">
+							<a href="@Url.Action("Details", "DICHVU", new { id = item.maDV })" class="service-btn service-btn-primary">Xem chi tiết</a>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>

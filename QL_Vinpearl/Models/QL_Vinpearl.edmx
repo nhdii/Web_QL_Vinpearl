@@ -1,0 +1,797 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QL_VinpearlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CHUCNANG">
+          <Key>
+            <PropertyRef Name="maChucNang" />
+          </Key>
+          <Property Name="maChucNang" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tenChucNang" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CTHD">
+          <Key>
+            <PropertyRef Name="maHD" />
+            <PropertyRef Name="maVe" />
+          </Key>
+          <Property Name="maHD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="maVe" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="soLuong" Type="int" />
+          <Property Name="giaTien" Type="money" />
+        </EntityType>
+        <EntityType Name="DICHVU">
+          <Key>
+            <PropertyRef Name="maDV" />
+          </Key>
+          <Property Name="maDV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tenDV" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="moTa" Type="ntext" />
+          <Property Name="anh" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="maLoaiDV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="xepLoai" Type="float" />
+          <Property Name="sdtDV" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="diaChiDV" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="maHD" />
+          </Key>
+          <Property Name="maHD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="maKH" Type="varchar" MaxLength="10" />
+          <Property Name="maNV" Type="varchar" MaxLength="10" />
+          <Property Name="ngayThanhToan" Type="datetime" />
+          <Property Name="SDT" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="maKH" />
+          </Key>
+          <Property Name="maKH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="hoTenKH" Type="nvarchar" MaxLength="255" />
+          <Property Name="SDT" Type="varchar" MaxLength="20" />
+          <Property Name="diaChi" Type="nvarchar" MaxLength="255" />
+          <Property Name="ngaySinh" Type="datetime" />
+          <Property Name="gioiTinh" Type="bit" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="matKhau" Type="varchar" MaxLength="255" />
+          <Property Name="anh" Type="varchar" MaxLength="255" />
+          <Property Name="ResetPasswordCode" Type="varchar" MaxLength="255" />
+          <Property Name="ResetPasswordCodeExpiration" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LOAIDV">
+          <Key>
+            <PropertyRef Name="maLoaiDV" />
+          </Key>
+          <Property Name="maLoaiDV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tenLoai" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="LOAINV">
+          <Key>
+            <PropertyRef Name="maLoaiNV" />
+          </Key>
+          <Property Name="maLoaiNV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tenLoai" Type="nvarchar" MaxLength="255" />
+          <Property Name="luongCoBan" Type="money" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="maNV" />
+          </Key>
+          <Property Name="maNV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="maLoaiNV" Type="varchar" MaxLength="10" />
+          <Property Name="hoTenNV" Type="nvarchar" MaxLength="255" />
+          <Property Name="diaChi" Type="nvarchar" MaxLength="255" />
+          <Property Name="ngaySinh" Type="datetime" />
+          <Property Name="sdt" Type="varchar" MaxLength="20" />
+          <Property Name="gioiTinh" Type="bit" />
+          <Property Name="anh" Type="varchar" MaxLength="255" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="matKhau" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PHANQUYEN">
+          <Key>
+            <PropertyRef Name="maChucNang" />
+            <PropertyRef Name="maLoaiNV" />
+          </Key>
+          <Property Name="maChucNang" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="maLoaiNV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ghiChu" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="SOCA">
+          <Key>
+            <PropertyRef Name="maCa" />
+            <PropertyRef Name="maNV" />
+          </Key>
+          <Property Name="maCa" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="maNV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="soCa" Type="int" />
+        </EntityType>
+        <EntityType Name="VE">
+          <Key>
+            <PropertyRef Name="maVe" />
+          </Key>
+          <Property Name="maVe" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="maDV" Type="varchar" MaxLength="10" />
+          <Property Name="loaiVe" Type="bit" />
+          <Property Name="giaTien" Type="money" />
+        </EntityType>
+        <Association Name="fk_CTHD_HOADON">
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="maHD" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="maHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CTHD_VE">
+          <End Role="VE" Type="Self.VE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VE">
+              <PropertyRef Name="maVe" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="maVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DICHVU_LOAIDV">
+          <End Role="LOAIDV" Type="Self.LOAIDV" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIDV">
+              <PropertyRef Name="maLoaiDV" />
+            </Principal>
+            <Dependent Role="DICHVU">
+              <PropertyRef Name="maLoaiDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_HOADON_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="maKH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="maKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_HOADON_NHANVIEN">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="maNV" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="maNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_NHANVIEN_LOAINV">
+          <End Role="LOAINV" Type="Self.LOAINV" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAINV">
+              <PropertyRef Name="maLoaiNV" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="maLoaiNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PHANQUYEN_CHUCNANG">
+          <End Role="CHUCNANG" Type="Self.CHUCNANG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUCNANG">
+              <PropertyRef Name="maChucNang" />
+            </Principal>
+            <Dependent Role="PHANQUYEN">
+              <PropertyRef Name="maChucNang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PHANQUYEN_LOAINV">
+          <End Role="LOAINV" Type="Self.LOAINV" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAINV">
+              <PropertyRef Name="maLoaiNV" />
+            </Principal>
+            <Dependent Role="PHANQUYEN">
+              <PropertyRef Name="maLoaiNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SOCA_NHANVIEN">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SOCA" Type="Self.SOCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="maNV" />
+            </Principal>
+            <Dependent Role="SOCA">
+              <PropertyRef Name="maNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VE_DICHVU">
+          <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VE" Type="Self.VE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DICHVU">
+              <PropertyRef Name="maDV" />
+            </Principal>
+            <Dependent Role="VE">
+              <PropertyRef Name="maDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QL_VinpearlModelStoreContainer">
+          <EntitySet Name="CHUCNANG" EntityType="Self.CHUCNANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTHD" EntityType="Self.CTHD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DICHVU" EntityType="Self.DICHVU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAIDV" EntityType="Self.LOAIDV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAINV" EntityType="Self.LOAINV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOCA" EntityType="Self.SOCA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VE" EntityType="Self.VE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_CTHD_HOADON" Association="Self.fk_CTHD_HOADON">
+            <End Role="HOADON" EntitySet="HOADON" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CTHD_VE" Association="Self.fk_CTHD_VE">
+            <End Role="VE" EntitySet="VE" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DICHVU_LOAIDV" Association="Self.fk_DICHVU_LOAIDV">
+            <End Role="LOAIDV" EntitySet="LOAIDV" />
+            <End Role="DICHVU" EntitySet="DICHVU" />
+          </AssociationSet>
+          <AssociationSet Name="fk_HOADON_KHACHHANG" Association="Self.fk_HOADON_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="fk_HOADON_NHANVIEN" Association="Self.fk_HOADON_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="fk_NHANVIEN_LOAINV" Association="Self.fk_NHANVIEN_LOAINV">
+            <End Role="LOAINV" EntitySet="LOAINV" />
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PHANQUYEN_CHUCNANG" Association="Self.fk_PHANQUYEN_CHUCNANG">
+            <End Role="CHUCNANG" EntitySet="CHUCNANG" />
+            <End Role="PHANQUYEN" EntitySet="PHANQUYEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PHANQUYEN_LOAINV" Association="Self.fk_PHANQUYEN_LOAINV">
+            <End Role="LOAINV" EntitySet="LOAINV" />
+            <End Role="PHANQUYEN" EntitySet="PHANQUYEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SOCA_NHANVIEN" Association="Self.fk_SOCA_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="SOCA" EntitySet="SOCA" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VE_DICHVU" Association="Self.fk_VE_DICHVU">
+            <End Role="DICHVU" EntitySet="DICHVU" />
+            <End Role="VE" EntitySet="VE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QL_VinpearlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QL_VinpearlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CTHD" EntityType="QL_VinpearlModel.CTHD" />
+          <EntitySet Name="CHUCNANG" EntityType="QL_VinpearlModel.CHUCNANG" />
+          <EntitySet Name="DICHVU" EntityType="QL_VinpearlModel.DICHVU" />
+          <EntitySet Name="HOADON" EntityType="QL_VinpearlModel.HOADON" />
+          <EntitySet Name="KHACHHANG" EntityType="QL_VinpearlModel.KHACHHANG" />
+          <EntitySet Name="LOAIDV" EntityType="QL_VinpearlModel.LOAIDV" />
+          <EntitySet Name="LOAINV" EntityType="QL_VinpearlModel.LOAINV" />
+          <EntitySet Name="NHANVIEN" EntityType="QL_VinpearlModel.NHANVIEN" />
+          <EntitySet Name="PHANQUYEN" EntityType="QL_VinpearlModel.PHANQUYEN" />
+          <EntitySet Name="SOCA" EntityType="QL_VinpearlModel.SOCA" />
+          <EntitySet Name="VE" EntityType="QL_VinpearlModel.VE" />
+          <AssociationSet Name="fk_CTHD_HOADON" Association="QL_VinpearlModel.fk_CTHD_HOADON">
+            <End Role="HOADON" EntitySet="HOADON" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CTHD_VE" Association="QL_VinpearlModel.fk_CTHD_VE">
+            <End Role="VE" EntitySet="VE" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PHANQUYEN_CHUCNANG" Association="QL_VinpearlModel.fk_PHANQUYEN_CHUCNANG">
+            <End Role="CHUCNANG" EntitySet="CHUCNANG" />
+            <End Role="PHANQUYEN" EntitySet="PHANQUYEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DICHVU_LOAIDV" Association="QL_VinpearlModel.fk_DICHVU_LOAIDV">
+            <End Role="LOAIDV" EntitySet="LOAIDV" />
+            <End Role="DICHVU" EntitySet="DICHVU" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VE_DICHVU" Association="QL_VinpearlModel.fk_VE_DICHVU">
+            <End Role="DICHVU" EntitySet="DICHVU" />
+            <End Role="VE" EntitySet="VE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_HOADON_KHACHHANG" Association="QL_VinpearlModel.fk_HOADON_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="fk_HOADON_NHANVIEN" Association="QL_VinpearlModel.fk_HOADON_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="fk_NHANVIEN_LOAINV" Association="QL_VinpearlModel.fk_NHANVIEN_LOAINV">
+            <End Role="LOAINV" EntitySet="LOAINV" />
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PHANQUYEN_LOAINV" Association="QL_VinpearlModel.fk_PHANQUYEN_LOAINV">
+            <End Role="LOAINV" EntitySet="LOAINV" />
+            <End Role="PHANQUYEN" EntitySet="PHANQUYEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SOCA_NHANVIEN" Association="QL_VinpearlModel.fk_SOCA_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="SOCA" EntitySet="SOCA" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CTHD">
+          <Key>
+            <PropertyRef Name="maHD" />
+            <PropertyRef Name="maVe" />
+          </Key>
+          <Property Name="maHD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="maVe" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="soLuong" Type="Int32" />
+          <Property Name="giaTien" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="HOADON" Relationship="QL_VinpearlModel.fk_CTHD_HOADON" FromRole="CTHD" ToRole="HOADON" />
+          <NavigationProperty Name="VE" Relationship="QL_VinpearlModel.fk_CTHD_VE" FromRole="CTHD" ToRole="VE" />
+        </EntityType>
+        <EntityType Name="CHUCNANG">
+          <Key>
+            <PropertyRef Name="maChucNang" />
+          </Key>
+          <Property Name="maChucNang" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tenChucNang" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PHANQUYEN" Relationship="QL_VinpearlModel.fk_PHANQUYEN_CHUCNANG" FromRole="CHUCNANG" ToRole="PHANQUYEN" />
+        </EntityType>
+        <EntityType Name="DICHVU">
+          <Key>
+            <PropertyRef Name="maDV" />
+          </Key>
+          <Property Name="maDV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tenDV" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="moTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="anh" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="maLoaiDV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="xepLoai" Type="Double" />
+          <Property Name="sdtDV" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="diaChiDV" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LOAIDV" Relationship="QL_VinpearlModel.fk_DICHVU_LOAIDV" FromRole="DICHVU" ToRole="LOAIDV" />
+          <NavigationProperty Name="VE" Relationship="QL_VinpearlModel.fk_VE_DICHVU" FromRole="DICHVU" ToRole="VE" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="maHD" />
+          </Key>
+          <Property Name="maHD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="maKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="maNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ngayThanhToan" Type="DateTime" Precision="3" />
+          <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CTHD" Relationship="QL_VinpearlModel.fk_CTHD_HOADON" FromRole="HOADON" ToRole="CTHD" />
+          <NavigationProperty Name="KHACHHANG" Relationship="QL_VinpearlModel.fk_HOADON_KHACHHANG" FromRole="HOADON" ToRole="KHACHHANG" />
+          <NavigationProperty Name="NHANVIEN" Relationship="QL_VinpearlModel.fk_HOADON_NHANVIEN" FromRole="HOADON" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="maKH" />
+          </Key>
+          <Property Name="maKH" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hoTenKH" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="diaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ngaySinh" Type="DateTime" Precision="3" />
+          <Property Name="gioiTinh" Type="Boolean" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="matKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="anh" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HOADON" Relationship="QL_VinpearlModel.fk_HOADON_KHACHHANG" FromRole="KHACHHANG" ToRole="HOADON" />
+          <Property Name="ResetPasswordCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ResetPasswordCodeExpiration" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="LOAIDV">
+          <Key>
+            <PropertyRef Name="maLoaiDV" />
+          </Key>
+          <Property Name="maLoaiDV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tenLoai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DICHVU" Relationship="QL_VinpearlModel.fk_DICHVU_LOAIDV" FromRole="LOAIDV" ToRole="DICHVU" />
+        </EntityType>
+        <EntityType Name="LOAINV">
+          <Key>
+            <PropertyRef Name="maLoaiNV" />
+          </Key>
+          <Property Name="maLoaiNV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tenLoai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="luongCoBan" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="NHANVIEN" Relationship="QL_VinpearlModel.fk_NHANVIEN_LOAINV" FromRole="LOAINV" ToRole="NHANVIEN" />
+          <NavigationProperty Name="PHANQUYEN" Relationship="QL_VinpearlModel.fk_PHANQUYEN_LOAINV" FromRole="LOAINV" ToRole="PHANQUYEN" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="maNV" />
+          </Key>
+          <Property Name="maNV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="maLoaiNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hoTenNV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="diaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ngaySinh" Type="DateTime" Precision="3" />
+          <Property Name="sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="gioiTinh" Type="Boolean" />
+          <Property Name="anh" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="matKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HOADON" Relationship="QL_VinpearlModel.fk_HOADON_NHANVIEN" FromRole="NHANVIEN" ToRole="HOADON" />
+          <NavigationProperty Name="LOAINV" Relationship="QL_VinpearlModel.fk_NHANVIEN_LOAINV" FromRole="NHANVIEN" ToRole="LOAINV" />
+          <NavigationProperty Name="SOCA" Relationship="QL_VinpearlModel.fk_SOCA_NHANVIEN" FromRole="NHANVIEN" ToRole="SOCA" />
+        </EntityType>
+        <EntityType Name="PHANQUYEN">
+          <Key>
+            <PropertyRef Name="maChucNang" />
+            <PropertyRef Name="maLoaiNV" />
+          </Key>
+          <Property Name="maChucNang" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="maLoaiNV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ghiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHUCNANG" Relationship="QL_VinpearlModel.fk_PHANQUYEN_CHUCNANG" FromRole="PHANQUYEN" ToRole="CHUCNANG" />
+          <NavigationProperty Name="LOAINV" Relationship="QL_VinpearlModel.fk_PHANQUYEN_LOAINV" FromRole="PHANQUYEN" ToRole="LOAINV" />
+        </EntityType>
+        <EntityType Name="SOCA">
+          <Key>
+            <PropertyRef Name="maCa" />
+            <PropertyRef Name="maNV" />
+          </Key>
+          <Property Name="maCa" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="maNV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="soCa1" Type="Int32" />
+          <NavigationProperty Name="NHANVIEN" Relationship="QL_VinpearlModel.fk_SOCA_NHANVIEN" FromRole="SOCA" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="VE">
+          <Key>
+            <PropertyRef Name="maVe" />
+          </Key>
+          <Property Name="maVe" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="maDV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="loaiVe" Type="Boolean" />
+          <Property Name="giaTien" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="CTHD" Relationship="QL_VinpearlModel.fk_CTHD_VE" FromRole="VE" ToRole="CTHD" />
+          <NavigationProperty Name="DICHVU" Relationship="QL_VinpearlModel.fk_VE_DICHVU" FromRole="VE" ToRole="DICHVU" />
+        </EntityType>
+        <Association Name="fk_CTHD_HOADON">
+          <End Type="QL_VinpearlModel.HOADON" Role="HOADON" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QL_VinpearlModel.CTHD" Role="CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="maHD" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="maHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CTHD_VE">
+          <End Type="QL_VinpearlModel.VE" Role="VE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QL_VinpearlModel.CTHD" Role="CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VE">
+              <PropertyRef Name="maVe" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="maVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PHANQUYEN_CHUCNANG">
+          <End Type="QL_VinpearlModel.CHUCNANG" Role="CHUCNANG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QL_VinpearlModel.PHANQUYEN" Role="PHANQUYEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUCNANG">
+              <PropertyRef Name="maChucNang" />
+            </Principal>
+            <Dependent Role="PHANQUYEN">
+              <PropertyRef Name="maChucNang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DICHVU_LOAIDV">
+          <End Type="QL_VinpearlModel.LOAIDV" Role="LOAIDV" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QL_VinpearlModel.DICHVU" Role="DICHVU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIDV">
+              <PropertyRef Name="maLoaiDV" />
+            </Principal>
+            <Dependent Role="DICHVU">
+              <PropertyRef Name="maLoaiDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VE_DICHVU">
+          <End Type="QL_VinpearlModel.DICHVU" Role="DICHVU" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QL_VinpearlModel.VE" Role="VE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DICHVU">
+              <PropertyRef Name="maDV" />
+            </Principal>
+            <Dependent Role="VE">
+              <PropertyRef Name="maDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_HOADON_KHACHHANG">
+          <End Type="QL_VinpearlModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QL_VinpearlModel.HOADON" Role="HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="maKH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="maKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_HOADON_NHANVIEN">
+          <End Type="QL_VinpearlModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QL_VinpearlModel.HOADON" Role="HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="maNV" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="maNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_NHANVIEN_LOAINV">
+          <End Type="QL_VinpearlModel.LOAINV" Role="LOAINV" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QL_VinpearlModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAINV">
+              <PropertyRef Name="maLoaiNV" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="maLoaiNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PHANQUYEN_LOAINV">
+          <End Type="QL_VinpearlModel.LOAINV" Role="LOAINV" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QL_VinpearlModel.PHANQUYEN" Role="PHANQUYEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAINV">
+              <PropertyRef Name="maLoaiNV" />
+            </Principal>
+            <Dependent Role="PHANQUYEN">
+              <PropertyRef Name="maLoaiNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SOCA_NHANVIEN">
+          <End Type="QL_VinpearlModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QL_VinpearlModel.SOCA" Role="SOCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="maNV" />
+            </Principal>
+            <Dependent Role="SOCA">
+              <PropertyRef Name="maNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QL_VinpearlModelStoreContainer" CdmEntityContainer="QL_VinpearlEntities">
+          <EntitySetMapping Name="CTHD">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.CTHD">
+              <MappingFragment StoreEntitySet="CTHD">
+                <ScalarProperty Name="giaTien" ColumnName="giaTien" />
+                <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+                <ScalarProperty Name="maVe" ColumnName="maVe" />
+                <ScalarProperty Name="maHD" ColumnName="maHD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHUCNANG">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.CHUCNANG">
+              <MappingFragment StoreEntitySet="CHUCNANG">
+                <ScalarProperty Name="tenChucNang" ColumnName="tenChucNang" />
+                <ScalarProperty Name="maChucNang" ColumnName="maChucNang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DICHVU">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.DICHVU">
+              <MappingFragment StoreEntitySet="DICHVU">
+                <ScalarProperty Name="diaChiDV" ColumnName="diaChiDV" />
+                <ScalarProperty Name="sdtDV" ColumnName="sdtDV" />
+                <ScalarProperty Name="xepLoai" ColumnName="xepLoai" />
+                <ScalarProperty Name="maLoaiDV" ColumnName="maLoaiDV" />
+                <ScalarProperty Name="anh" ColumnName="anh" />
+                <ScalarProperty Name="moTa" ColumnName="moTa" />
+                <ScalarProperty Name="tenDV" ColumnName="tenDV" />
+                <ScalarProperty Name="maDV" ColumnName="maDV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOADON">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.HOADON">
+              <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="ngayThanhToan" ColumnName="ngayThanhToan" />
+                <ScalarProperty Name="maNV" ColumnName="maNV" />
+                <ScalarProperty Name="maKH" ColumnName="maKH" />
+                <ScalarProperty Name="maHD" ColumnName="maHD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANG">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="ResetPasswordCodeExpiration" ColumnName="ResetPasswordCodeExpiration" />
+                <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
+                <ScalarProperty Name="anh" ColumnName="anh" />
+                <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+                <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+                <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="hoTenKH" ColumnName="hoTenKH" />
+                <ScalarProperty Name="maKH" ColumnName="maKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAIDV">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.LOAIDV">
+              <MappingFragment StoreEntitySet="LOAIDV">
+                <ScalarProperty Name="tenLoai" ColumnName="tenLoai" />
+                <ScalarProperty Name="maLoaiDV" ColumnName="maLoaiDV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAINV">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.LOAINV">
+              <MappingFragment StoreEntitySet="LOAINV">
+                <ScalarProperty Name="luongCoBan" ColumnName="luongCoBan" />
+                <ScalarProperty Name="tenLoai" ColumnName="tenLoai" />
+                <ScalarProperty Name="maLoaiNV" ColumnName="maLoaiNV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIEN">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="anh" ColumnName="anh" />
+                <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
+                <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+                <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+                <ScalarProperty Name="hoTenNV" ColumnName="hoTenNV" />
+                <ScalarProperty Name="maLoaiNV" ColumnName="maLoaiNV" />
+                <ScalarProperty Name="maNV" ColumnName="maNV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHANQUYEN">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.PHANQUYEN">
+              <MappingFragment StoreEntitySet="PHANQUYEN">
+                <ScalarProperty Name="ghiChu" ColumnName="ghiChu" />
+                <ScalarProperty Name="maLoaiNV" ColumnName="maLoaiNV" />
+                <ScalarProperty Name="maChucNang" ColumnName="maChucNang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOCA">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.SOCA">
+              <MappingFragment StoreEntitySet="SOCA">
+                <ScalarProperty Name="soCa1" ColumnName="soCa" />
+                <ScalarProperty Name="maNV" ColumnName="maNV" />
+                <ScalarProperty Name="maCa" ColumnName="maCa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VE">
+            <EntityTypeMapping TypeName="QL_VinpearlModel.VE">
+              <MappingFragment StoreEntitySet="VE">
+                <ScalarProperty Name="giaTien" ColumnName="giaTien" />
+                <ScalarProperty Name="loaiVe" ColumnName="loaiVe" />
+                <ScalarProperty Name="maDV" ColumnName="maDV" />
+                <ScalarProperty Name="maVe" ColumnName="maVe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

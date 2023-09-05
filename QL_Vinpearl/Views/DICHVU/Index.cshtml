@@ -1,0 +1,135 @@
+﻿@model IEnumerable<QL_Vinpearl.Models.DICHVU>
+
+@{
+	ViewBag.Title = "Trang Chủ";
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link href="~/Content/css/styleAdmin.css" rel="stylesheet" />
+	<link href="~/Content/bootstrap5/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="background-img">
+		<h1>VINPEARL</h1>
+		<h2>SIÊU QUẦN THỂ VINPEARL</h2>
+		<p>
+			Siêu quẩn thể nghỉ dưỡng, vui chơi giải trí, mua sắm và ẩm<br />
+			thực tại các điểm đến hàng đầu Việt Nam
+		</p>
+	</div>
+
+	<div class="container-fluid py-5">
+		<div class="container">
+			<div class="row gx-5">
+				<div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+					<div class="position-relative h-100">
+						<img class="position-absolute w-100 h-100 rounded" src="https://statics.vinpearl.com/styles/banner/public/2021_06/banner_nt_pc_1624243999.jpg.webp?itok=Ak-6ZWku" style="object-fit: cover;">
+					</div>
+				</div>
+				<div class="col-lg-7">
+					<div class="border-start border-5 border-primary ps-5 mb-5">
+						<h6 class="text-primary text-uppercase">Tổng quan</h6>
+						<h2 class=" text-uppercase mb-0">NƠI KHỞI ĐẦU KỲ TÍCH CỦA TRIỆU NIỀM VUI</h2>
+					</div>
+					<h4 class="text-body mb-4">Vinpearl Nha Trang - Quần thể du lịch nghỉ dưỡng, vui chơi và khám phá biển hàng đầu Đông Nam Á, top 10 vịnh biển đẹp nhất hành tinh tạo nên vạn trải nghiệm nghỉ dưỡng đỉnh cao.</h4>
+
+					<div class="bg-light p-4">
+						<ul class="nav nav-pills justify-content-between mb-3" id="pills-tab" role="tablist">
+							<li class="nav-item w-50" role="presentation">
+								<button class="nav-link text-uppercase w-100 active" id="pills-1-tab" data-bs-toggle="pill" data-bs-target="#pills-1" type="button" role="tab" aria-controls="pills-1" aria-selected="true">
+									Nhiệm vụ
+								</button>
+							</li>
+							<li class="nav-item w-50" role="presentation">
+								<button class="nav-link text-uppercase w-100" id="pills-2-tab" data-bs-toggle="pill" data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-2" aria-selected="false">Our Mission</button>
+							</li>
+						</ul>
+						<div class="tab-content" id="pills-tabContent">
+							<div class="tab-pane fade active show" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+								<p class="mb-0">
+									Vinpearl Resort Nha Trang chào đón du khách bằng vẻ đẹp Á Đông thuần khiết với kiến trúc mang đậm
+									phong cách Indochine sang trọng cùng bãi biển riêng tư hút mắt. Giữa vạn trải nghiệm sôi nổi, tại
+									quần thể nghỉ dưỡng – giải trí biển hàng đầu khu vực của đảo Hòn Tre, Vinpearl Resort Nha Trang là
+									thiên đàng trú ẩn yên bình dành cho những ai yêu thích nghỉ dưỡng và chăm sóc sức khỏe, là nơi để phục
+									hồi năng lượng cho những tâm hồn sôi nổi yêu giải trí và khám phá, nơi ghi dấu hạnh phúc bằng một đám
+									cưới trong mơ, hay hội họp đẳng cấp để dẫn lối tới thành công.
+								</p>
+							</div>
+							<div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+								<p class="mb-0">
+									Vinpearl Resort Nha Trang welcomes guests with pure Asian beauty with luxurious
+									Indochine-style architecture and a private beach that attracts customers. In the midst of thousands
+									of exciting experiences, at the top beach resort - entertainment clothes in Hon Tre area, Vinpearl
+									Resort Nha Trang is a hidden, peaceful paradise for those who love relaxation and health exercise.
+									a place to restore energy for vibrant souls who demand entertainment and discovery, mark their
+									happiness with a dream wedding, or high-class meeting to lead the way to success.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid py-5">
+		<div class="container">
+			<div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+				<h6 class="text-primary text-uppercase">Dịch vụ</h6>
+				<h3 class=" text-uppercase mb-0">Sản phẩm dành cho bạn</h3>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid py-5">
+		<div class="service-container">
+			<div class="row">
+				@{
+					int itemsPerPage = 9; // Số mục trên mỗi trang
+					int currentPage = (int)(Session["CurrentPage"] ?? 1);
+					int totalItems = Model.Count(); // Tổng số mục
+					int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage); // Tổng số trang
+					int startItem = (currentPage - 1) * itemsPerPage;
+					int endItem = Math.Min(startItem + itemsPerPage, totalItems);
+
+					var itemsOnCurrentPage = Model.Skip(startItem).Take(endItem - startItem);
+				}
+
+				@foreach (var item in itemsOnCurrentPage)
+				{
+					<div class="col-md-4 mb-3">
+						<div class="service-card h-100">
+							<img src="~/Content/img/@Html.DisplayFor(modelItem => item.anh )" class="card-img-top" alt="Product image">
+							<div class="service-card-body">
+								<h5 class="service-card-title">@Html.DisplayFor(modelItem => item.tenDV)</h5>
+							</div>
+							<div class="service-card-footer">
+								<a href="@Url.Action("Details", "DICHVU", new { id = item.maDV })" class="service-btn service-btn-primary">Xem chi tiết</a>
+							</div>
+						</div>
+					</div>
+				}
+
+				<div class="pagination d-flex justify-content-center mt-2">
+					@if (totalPages > 1)
+					{
+						for (int i = 1; i <= totalPages; i++)
+						{
+							<a href="@Url.Action("Index", "DICHVU", new { page = i })" class="page-link @(i == currentPage ? "active" : "")">@i</a>
+							Session["CurrentPage"] = null; // giải phóng bộ nhớ
+						}
+					}
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
